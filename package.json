@@ -1,0 +1,15 @@
+{
+  "name": "pancake-bot",
+  "version": "2.0.0",
+  "description": "Modular discord chatbot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/sockpuppetcow/pancake-bot"
+  },
+  "author": "Andrew Thompson",
+  "license": "MIT"
+}
