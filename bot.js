@@ -17,16 +17,17 @@ function loadBotModules() {
 					if (path.extname(modPath) === ".js") {
 						var temp = require(modPath);
 						bot.modules[temp.config.name] = temp;
+						//TODO: Register commands
+				
+						for (key in temp.events) {
+							bot.client.on(key, temp.events[key]);
+						}
+
+						bot.modules[temp.config.name].init(bot);
+						
 					}
 				}
 
-				//TODO: Register commands
-				
-				for (key in temp.events) {
-					bot.client.on(key, temp.events[key]);
-				}
-
-				bot.modules[temp.config.name].init(bot);
 			});
 		});
 	});
