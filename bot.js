@@ -8,4 +8,6 @@ client.on("ready", function() {
 	console.log("Hi, I'm Pancake!");
 });
 
+
+
 client.login(token);
