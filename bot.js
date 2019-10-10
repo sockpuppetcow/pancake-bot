@@ -11,7 +11,7 @@ function loadBotModules() {
 		}
 
 		files.forEach(function(f, index) {
-			var modPath = path.join(bot.config.modulesPath, f);
+			var modPath = "./" + path.join(bot.config.modulesPath, f);
 			var modStat = fs.stat(modPath, function(err, stats) {
 				if (stats.isFile()) {
 					if (path.extname(modPath) === ".js") {
@@ -49,6 +49,7 @@ var bot = {
 var token = fs.readFileSync('token.txt', 'utf8');
 token = token.replace(/\r|\n/g, "")
 bot.client.on("ready", function() {
+	loadBotModules();
 	console.log("Hi, I'm Pancake!");
 });
 
