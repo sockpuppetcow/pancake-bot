@@ -17,8 +17,11 @@ function loadBotModules() {
 					if (path.extname(modPath) === ".js") {
 						var temp = require(modPath);
 						bot.modules[temp.config.name] = temp;
-						//TODO: Register commands
-				
+						//Register commands
+						for (key in temp.commands) {
+							bot.commands[key] = temp.commands[key];
+						}
+
 						//Register events
 						//TODO: Make this instead delegate to a handler which will track what module is doing what
 						for (key in temp.events) {
@@ -44,8 +47,17 @@ var bot = {
 	commands: {}
 };
 
-
-
+//Execute commands
+bot.client.on("message", function(msg) {
+	if (msg.content.startsWith("!")) {
+		var split = msg.content.split(" ");
+		var cmd = split[0].substring(1);
+		if (bot.commands[cmd]) {
+			var args = split.shift();
+			bot.commands[cmd](msg,args);
+		}
+	}
+});
 
 //Discord stuff
 
@@ -54,6 +66,7 @@ token = token.replace(/\r|\n/g, "")
 bot.client.on("ready", function() {
 	loadBotModules();
 	console.log("Hi, I'm Pancake!");
+	console.log(bot.commands);
 });
 
 bot.client.login(token);

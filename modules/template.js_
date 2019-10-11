@@ -5,7 +5,13 @@ module.exports = {
 	config: {
 		name: "Template"
 	},
-	commands: {},
+	commands: {
+		template: function(msg, args) {
+			//msg = Full msg object, as from the message event.
+			//args = Arguments, String[]. args[0] is the first argument after the command itself
+			msg.reply("Response.");
+		}
+	},
 	events: {},
 	init: function(m_bot) {
 		bot = m_bot;
