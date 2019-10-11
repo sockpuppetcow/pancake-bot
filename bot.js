@@ -19,6 +19,8 @@ function loadBotModules() {
 						bot.modules[temp.config.name] = temp;
 						//TODO: Register commands
 				
+						//Register events
+						//TODO: Make this instead delegate to a handler which will track what module is doing what
 						for (key in temp.events) {
 							bot.client.on(key, temp.events[key]);
 						}
