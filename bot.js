@@ -24,16 +24,15 @@ function loadBotModules() {
 							} else {
 								console.log("Command collision detected from module " + temp.config.name + ". " + temp.commands[key] + " alrady exists. Command blocked.");
 							}
-
-							//Register events
-							//TODO: Make this instead delegate to a handler which will track what module is doing what
-							for (key in temp.events) {
-								bot.client.on(key, temp.events[key]);
-							}
-	
-							bot.modules[temp.config.name].init(bot);
-							
 						}
+
+						//Register events
+						//TODO: Make this instead delegate to a handler which will track what module is doing what
+						for (key in temp.events) {
+							bot.client.on(key, temp.events[key]);
+						}
+
+						bot.modules[temp.config.name].init(bot);	
 					}
 				}
 			});
