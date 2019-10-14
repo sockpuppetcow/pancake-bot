@@ -8,17 +8,20 @@ module.exports = {
 	commands: {},
 	events: {
 		message: function (msg) {
+			//Trim out all the special characters
+			var trim = msg.content.replace(/[^0-9a-z\s]/gi, '').toUpperCase();
+			
 			//Whole sentences
-			var trim = msg.content.replace(/[^0-9a-z]/gi, '').toUpperCase();
-			var revtrim = trim.split("").reverse().join("");
-
-			if (trim === revtrim && trim.length > 3) {
+			var spaceless = trim.replace(/[^0-9a-z]/gi, '').toUpperCase();
+			var revs = spaceless.split("").reverse().join("");
+			
+			if (spaceless === revs && spaceless.length > 3) {
 				msg.react('🔁');
 			}
 
 			//Single word palindromes
 			if (msg.author != bot.client.user) {
-				var words = msg.content.split(" ");
+				var words = trim.split(" ");
 				for (key in words) {
 					var word = words[key].toUpperCase();
 					var revword = word.split("").reverse().join("");
