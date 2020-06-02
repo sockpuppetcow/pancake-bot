@@ -1,6 +1,15 @@
 var fs = require('fs');
 var path = require("path");
+var sqlite3 = require('sqlite3').verbose();
+var db;
 const Discord = require("discord.js");
+
+function connectDatabase() {
+	console.log("Connecting to database.");
+
+	db = new sqlite3.Database('./pancake.sqlite');
+	
+}
 
 function loadBotModules() {
 	console.log("Loading modules from directory: " + bot.config.modulesPath);
@@ -22,7 +31,7 @@ function loadBotModules() {
 							if (!bot.commands[key]) {
 								bot.commands[key] = temp.commands[key];
 							} else {
-								console.log("Command collision detected from module " + temp.config.name + ". " + temp.commands[key] + " alrady exists. Command blocked.");
+								console.log("Command collision detected from module " + temp.config.name + ". " + temp.commands[key] + " already exists. Command blocked.");
 							}
 						}
 
@@ -45,6 +54,7 @@ var bot = {
 		modulesPath: './modules'
 	},
 	client: new Discord.Client(),
+	database: db,
 	modules: {},
 	commands: {}
 };
@@ -66,6 +76,7 @@ bot.client.on("message", function(msg) {
 var token = fs.readFileSync('token.txt', 'utf8');
 token = token.replace(/\r|\n/g, "")
 bot.client.on("ready", function() {
+	connectDatabase();
 	loadBotModules();
 	console.log("Hi, I'm Pancake!");
 	console.log(bot.commands);

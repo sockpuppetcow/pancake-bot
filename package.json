@@ -11,5 +11,9 @@
     "url": "https://www.github.com/sockpuppetcow/pancake-bot"
   },
   "author": "Andrew Thompson",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "sqlite3": "^4.2.0"
+  }
 }
