@@ -62,4 +62,3 @@ typings/
 
 #Privates and Binaries
 *.sqlite
-token.txt
