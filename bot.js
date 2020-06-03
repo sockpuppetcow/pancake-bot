@@ -1,14 +1,15 @@
 var fs = require('fs');
 var path = require("path");
-var sqlite3 = require('sqlite3').verbose();
+const sqlite3 = require('better-sqlite3');
 var db;
 const Discord = require("discord.js");
 
 function connectDatabase() {
+	//TODO: Get some error checking on this, it is file IO after all.
 	console.log("Connecting to database.");
 
-	db = new sqlite3.Database('./pancake.sqlite');
-	
+	db = new sqlite3('./pancake.sqlite', {verbose: console.log});
+	bot.database = db;
 }
 
 function loadBotModules() {
