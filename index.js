@@ -8,6 +8,7 @@ function startChild() {
 	child.on("exit", function(status, signal) {
 		console.log("Bot stopped with status code " + status);
 		if (status) {
+			child = fork("./bot.js");
 			startChild();
 		}
 	});
