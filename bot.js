@@ -64,7 +64,7 @@ var bot = {
 bot.client.on("message", function(msg) {
 	if (msg.content.startsWith("!")) {
 		var split = msg.content.split(" ");
-		var cmd = split[0].substring(1);
+		var cmd = split[0].substring(1).toLowerCase();
 		if (bot.commands[cmd]) {
 			var args = split.shift();
 			bot.commands[cmd](msg,args);
