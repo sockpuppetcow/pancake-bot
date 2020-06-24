@@ -13,11 +13,12 @@ module.exports = {
 				var text = ":heart::orange_heart::yellow_heart::green_heart::blue_heart::purple_heart:";
 				msg.channel.send(text);
 			}
+		}
 	},
 	events: {},
 	init: function(m_bot) {
 		bot = m_bot;
 		console.log("[Rainbow] Initializing");
 	}
-};
+}
 
