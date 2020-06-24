@@ -65,9 +65,23 @@ bot.client.on("message", function(msg) {
 	if (msg.content.startsWith("!")) {
 		var split = msg.content.split(" ");
 		var cmd = split[0].substring(1).toLowerCase();
-		if (bot.commands[cmd]) {
-			var args = split.shift();
-			bot.commands[cmd](msg,args);
+		var com = bot.commands[cmd];
+		if (com) {
+			let allowed = false;
+			console.log(com.perm);
+			if (com.perm == null || com.perm == undefined || com.perm == "") {
+				allowed = true;
+			} else {
+				//We care about permissions.
+				if (msg.member.permissions.has(com.perm)) {
+					allowed = true;
+				}
+			}
+
+			if (allowed) {
+				var args = split.shift();
+				com.exec(msg,args);
+			}
 		}
 	}
 });

@@ -6,10 +6,14 @@ module.exports = {
 		name: "Template"
 	},
 	commands: {
-		template: function(msg, args) {
-			//msg = Full msg object, as from the message event.
-			//args = Arguments, String[]. args[0] is the first argument after the command itself
-			msg.reply("Response.");
+		template: {
+			exec: function(msg, args) {
+				//msg = Full msg object, as from the message event.
+				//args = Arguments, String[]. args[0] is the first argument after the command itself
+				msg.reply("Response.");
+			},
+			perm: ""	//Any discord Permissions.FLAGS string
+						//"" or just not including on the structure assumes everyone can use it
 		}
 	},
 	events: {},
