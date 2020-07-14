@@ -1,0 +1,33 @@
+var bot;
+
+module.exports = {
+	config: {
+		name: "Emoji Detector"
+	},
+	commands: {},
+	events: {
+		message: function(msg) {
+			let i = 0;
+			let manager = bot.client.emojis;
+			let hits = manager.cache.filter(e => msg.content.includes(e.toString()));
+			hits.each(e => msg.react(e.identifier));
+			for (i = 0; i < msg.content.length; i++ ) {
+				var cp = msg.content.codePointAt(i);
+				if (cp > 255) {
+
+					console.log(cp);
+					console.log(String.fromCodePoint(cp));
+					msg.react(String.fromCodePoint(cp)).catch((error) => {
+						console.log("Reaction failed for U+" + cp +".");
+					});
+				}
+			}
+		
+		}
+	},
+	init: function(m_bot) {
+		bot = m_bot;
+		console.log("[Emoji Detector] Initializing");
+	}
+}
+

@@ -1,0 +1,23 @@
+var bot;
+
+module.exports = {
+	config: {
+		name: "Mentions testing"
+	},
+	commands: {},
+	events: {
+		message: function (msg) {
+			let intersect = msg.mentions.roles.intersect(msg.guild.me.roles.cache);
+			console.log(intersect.size);
+			if (intersect.size) {
+				console.log("I've been mentioned!");
+			}
+
+		}
+	},
+	init: function(m_bot) {
+		bot = m_bot;
+		console.log("[Mentions Test] Initializing");
+	}
+};
+
