@@ -98,7 +98,7 @@ module.exports = {
 					embed.addField(e, "<@&" + r + ">", true);
 				});
 
-				msg.channel.send(embed).then(function(m) {
+				channel.send(embed).then(function(m) {
 					associations[m.id] = assoc_map;
 					console.log(m.id);
 					var inserts = []
