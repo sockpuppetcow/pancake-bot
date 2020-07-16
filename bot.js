@@ -56,6 +56,7 @@ var bot = {
 	},
 	client: new Discord.Client(),
 	database: db,
+	discord: Discord,
 	modules: {},
 	commands: {}
 };
@@ -79,8 +80,8 @@ bot.client.on("message", function(msg) {
 			}
 
 			if (allowed) {
-				var args = split.shift();
-				com.exec(msg,args);
+				split.shift();
+				com.exec(msg,split);
 			}
 		}
 	}
