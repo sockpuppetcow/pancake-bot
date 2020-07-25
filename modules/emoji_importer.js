@@ -41,6 +41,7 @@ module.exports = {
 						msg.react(emoji);
 					}).catch(function(error) {
 						console.log("Error while importing " + args[i]);
+						console.error(error);
 					});
 				}
 
