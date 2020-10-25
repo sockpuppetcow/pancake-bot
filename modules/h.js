@@ -24,6 +24,18 @@ module.exports = {
 				msg.channel.send(text);
 			},
 			perm: "SEND_MESSAGES"
+		},
+		buzz: {
+			exec: function(msg, args) {
+				var z = Math.floor(Math.random() * 1999) + 1;
+				var text = "B";
+				var i;
+				for (i = 0; i < z; i++) {
+					text += "Z";
+				}
+				msg.channel.send(text);
+			},
+			perm: "SEND_MESSAGES"
 		}
 	},
 	events: {},
