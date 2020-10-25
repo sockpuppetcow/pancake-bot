@@ -13,7 +13,13 @@ function generateLine(user, target, damage) {
 		user + " casts fireball at " + target + " and deals " + damage + " damage.",
 		user + " snaps " + target + " out of existence.",
 		user + " tases " + target + " dealing " + damage + " damage.",
-		user + " smashes a TV over " + target + "'s head, dealing " + damage + " damage."
+		user + " smashes a TV over " + target + "'s head, dealing " + damage + " damage.",
+		user + " throws " + target + " against a wall, dealing " + damage + " damage.",
+		user + " drops " + target + " horizontally, dealing " + damage + " damage.",
+		user + " tastes " + target + " dealing " + damage + " damage.",
+		user + " slide tackles " + target + " dealing " + damage + " damage.",
+		user + " body slams " + target + " dealing " + damage + " damage.",
+		user + " curb stomps " + target + " dealing " + damage + " damage."
 	];
 
 	return lines[Math.floor(Math.random()*lines.length)];
