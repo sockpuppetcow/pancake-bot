@@ -65,7 +65,7 @@ module.exports = {
 
 				//As a result of lines 21-27, i should now be set to the first emoji index in the arguments
 				
-				//Make sure arguments match up now.
+				//Make sure arguents match up now.
 				
 				if ((args.length - i) %2 != 0) {
 					msg.channel.send("Argument length mismatch.");
@@ -138,6 +138,7 @@ module.exports = {
 	events: {
 		messageDelete: function(deleted) {
 			if (deleted.author.id == bot.client.user.id) {
+				//TODO: Check if there's an association with that message ID first.
 				const del = bot.database.prepare("DELETE FROM reactionroles_assoc WHERE message_id = (?)");
 				del.run(deleted.id);
 			}
